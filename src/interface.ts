@@ -16,3 +16,12 @@ export interface ISignup {
     email: string
     password: string
 }
+
+export interface IConversation {
+    user: string
+    message: string
+}
+
+export interface IConversationList {
+    conversations: IConversation[]
+}
