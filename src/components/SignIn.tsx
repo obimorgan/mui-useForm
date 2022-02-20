@@ -7,13 +7,14 @@ import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-import * as React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { ILogin } from '../interface';
+import { useNavigate } from 'react-router-dom'
 
 const theme = createTheme()
 
 export const SignIn: React.FC = () => {
+  const navigate = useNavigate()
   const { register, control, handleSubmit, watch, formState: { errors } } = useForm<ILogin>()
   const onSubmit: SubmitHandler<ILogin> = async (data) => {
   const usersInput = watch('email')
@@ -24,7 +25,8 @@ export const SignIn: React.FC = () => {
                 headers: { 'content-type': 'application/json'}
             })
             if (response.ok) {
-                console.log("Signed in successfully!")
+              console.log("Signed in successfully!")
+              navigate('/')
             }
                 else { throw new Error("Signing in failed")}
             } catch (error) {

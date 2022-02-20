@@ -1,6 +1,9 @@
+import { TopBar } from './TopBar'
 
 export const Home: React.FC = () => {
     return (
-        <div>Home</div>
+        <>
+            <TopBar/>
+        </>
     )
 }
